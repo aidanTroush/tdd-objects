@@ -114,9 +114,8 @@ export function getTaxicabDistance(from, to) {
  * getHerbivores([{name: "Rabbit", isHerbivore: true}]); // [{name: "Rabbit", isHerbivore: true}]
  */
 export function getHerbivores(animals) {
-  // TODO
+  return animals.filter((animal) => animal.isHerbivore === true);
 }
-
 /**
  * @typedef {{name: string, isCarnivore: boolean}} Animal
  * @param {Animal[]} animals
@@ -130,7 +129,11 @@ export function getHerbivores(animals) {
  * getCarnivoreNames([{name: "Wolf", isCarnivore: true}]); // ["Wolf"]
  */
 export function getCarnivoreNames(animals) {
-  // TODO
+  const carnivores = [];
+  for (const animal of animals) {
+    if (animal.isCarnivore) carnivores.push(animal.name);
+  }
+  return carnivores;
 }
 
 /**
@@ -151,7 +154,11 @@ export function getCarnivoreNames(animals) {
  * getTotalCost([{name: "Notebook", quantity: 0, price: 5}]); // 0
  */
 export function getTotalCost(cart) {
-  // TODO
+  let cost = 0;
+  for (const item of cart) {
+    cost += item.price * item.quantity;
+  }
+  return cost;
 }
 
 /**
@@ -171,7 +178,11 @@ export function getTotalCost(cart) {
  * zip(["x"], ["x"]); // {x: "x"}
  */
 export function zip(keys, values) {
-  // TODO
+  const object = {};
+  for (let i = 0; i < keys.length; i++) {
+    object[keys[i]] = values[i];
+  }
+  return object;
 }
 
 /**
@@ -187,5 +198,13 @@ export function zip(keys, values) {
  * countCharacters("aAa"); // {a: 2, A: 1}
  */
 export function countCharacters(word) {
-  // TODO
+  const counts = {};
+  for (const character of word) {
+    if (character in counts) {
+      counts[character] += 1;
+    } else {
+      counts[character] = 1;
+    }
+  }
+  return counts;
 }
